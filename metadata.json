@@ -1,0 +1,6 @@
+{
+  "name": "SG FUTA Travel",
+  "description": "Dịch vụ cho thuê xe du lịch 9 - 16 - 34 - 45 chỗ kèm tài xế riêng trên 20 năm kinh nghiệm tại Sài Gòn. Tra cứu giá tự động tuyến Vũng Tàu, Phan Thiết, Đà Lạt.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
