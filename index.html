@@ -1,10 +1,26 @@
+Để thêm **Logo nhà xe** vào góc trái website (trên thanh Menu Header), bạn chỉ cần làm theo 2 bước cực kỳ đơn giản sau đây:
+
+---
+
+### Bước 1: Chuẩn bị file logo trên máy tính
+
+1. Đổi tên file ảnh logo của bạn thành: **`logo.png`** (hoặc `logo.jpg`).
+2. Tải file `logo.png` đó lên thư mục **`images`** trên GitHub giống như cách bạn đã tải các ảnh xe và tài xế trước đó.
+
+---
+
+### Bước 2: Cập nhật mã nguồn `index.html` hoàn chỉnh
+
+Dưới đây là toàn bộ mã nguồn đã được tích hợp sẵn vị trí hiển thị logo (nếu bạn chưa kịp tải ảnh lên, web sẽ tự động hiển thị biểu tượng huy hiệu chữ **SG** rất đẹp mắt, khi bạn tải ảnh `logo.png` lên thì logo thật sẽ tự động hiện ra):
+
+```html
 <!DOCTYPE html>
 <html lang="vi">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>SG FUTA Travel - Cho Thuê Xe Du Lịch Kèm Tài Xế Riêng</title>
-  <meta name="description" content="SG FUTA Travel chuyên cho thuê xe du lịch 9, 16, 34, 54 chỗ kèm tài xế riêng đi Sài Gòn - Vũng Tàu, Phan Thiết, Đà Lạt. Bảng giá tự động chuẩn xác." />
+  <meta name="description" content="SG FUTA Travel chuyên cho thuê xe du lịch 9, 16, 34, 45 chỗ kèm tài xế riêng đi Sài Gòn - Vũng Tàu, Phan Thiết, Đà Lạt. Bảng giá tự động chuẩn xác." />
   
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -45,8 +61,11 @@
 
     .navbar { background: var(--white); border-bottom: 1px solid var(--border-color); position: sticky; top: 0; z-index: 1000; box-shadow: var(--shadow-sm); }
     .navbar .container { display: flex; align-items: center; justify-content: space-between; height: 80px; }
+    
     .brand-logo { display: flex; align-items: center; gap: 12px; font-weight: 900; font-size: 1.5rem; }
+    .brand-logo-img { height: 48px; width: auto; object-fit: contain; }
     .logo-badge { background: var(--primary-orange); color: var(--white); width: 48px; height: 48px; border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; font-size: 1.25rem; font-weight: 900; }
+    
     .brand-name { color: var(--primary-orange); line-height: 1.1; font-size: 1.45rem; }
     .brand-name span { color: var(--primary-green); }
     .brand-sub { font-size: 0.72rem; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.8px; }
@@ -92,22 +111,28 @@
     .action-btn-book { background: var(--primary-green); color: var(--white); border: none; padding: 14px 20px; border-radius: var(--radius-md); font-weight: 700; font-size: 1rem; cursor: pointer; width: 100%; transition: background 0.2s; box-shadow: 0 4px 12px rgba(15,76,39,0.25); }
     .action-btn-book:hover { background: var(--primary-green-light); }
 
-    /* Price Matrix Table Section */
-    .section-title-wrap { text-align: center; margin-bottom: 36px; }
-    .section-title { font-size: 2rem; font-weight: 800; color: var(--text-dark); }
-    .table-container { background: var(--white); border-radius: var(--radius-lg); border: 1px solid var(--border-color); overflow-x: auto; margin-bottom: 60px; box-shadow: var(--shadow-sm); }
-    .price-matrix-table { width: 100%; border-collapse: collapse; text-align: left; min-width: 640px; }
-    .price-matrix-table th { background: #F1F5F9; color: var(--text-dark); font-weight: 800; padding: 14px 18px; border-bottom: 2px solid var(--border-color); }
-    .price-matrix-table td { padding: 14px 18px; border-bottom: 1px solid var(--border-color); font-size: 0.95rem; }
-    .price-matrix-table tr:hover { background-color: #F8FAFC; }
-    .price-tag-cell { font-weight: 800; color: var(--primary-orange); }
+    /* Fleet Showcase */
+    .fleet-section { padding: 60px 0; background: #F1F5F9; }
+    .fleet-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; margin-top: 30px; }
+    .fleet-card { background: var(--white); border-radius: var(--radius-lg); overflow: hidden; border: 1px solid var(--border-color); box-shadow: var(--shadow-sm); }
+    .fleet-img-wrap { height: 200px; overflow: hidden; }
+    .fleet-img-wrap img { width: 100%; height: 100%; object-fit: cover; }
+    .fleet-body { padding: 20px; }
+    .fleet-title { font-size: 1.2rem; font-weight: 800; color: var(--text-dark); margin-bottom: 6px; }
+    .fleet-desc { font-size: 0.88rem; color: var(--text-muted); }
+
+    /* Driver Section */
+    .driver-section { padding: 60px 0; background: var(--white); }
+    .driver-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 36px; align-items: center; }
+    .driver-img-box { border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-md); }
+    .driver-img-box img { width: 100%; height: 350px; object-fit: cover; display: block; }
 
     /* Footer */
     .footer { background: #0B2B16; color: #E2E8F0; padding: 50px 0 20px; margin-top: auto; }
     .footer-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 36px; margin-bottom: 30px; }
 
     @media (max-width: 768px) {
-      .hero-grid, .calc-body, .form-group-grid, .footer-grid { grid-template-columns: 1fr; }
+      .hero-grid, .calc-body, .form-group-grid, .footer-grid, .driver-grid { grid-template-columns: 1fr; }
       .nav-links { display: none; }
     }
   </style>
@@ -121,7 +146,7 @@
         <span>📍 Sài Gòn - Vũng Tàu - Phan Thiết - Đà Lạt</span>
         <span>🕒 Phục vụ 24/7</span>
       </div>
-      <div>Hotline đặt xe nhanh: <strong>1900 996646</strong></div>
+      <div>Hotline đặt xe: <strong>1900 996646</strong> - <strong>028 3636 9551</strong></div>
     </div>
   </div>
 
@@ -129,7 +154,10 @@
   <nav class="navbar">
     <div class="container">
       <a href="#" class="brand-logo">
-        <div class="logo-badge">SG</div>
+        <!-- Tích hợp Logo hãng xe -->
+        <img src="images/logo.png" alt="SG FUTA Travel Logo" class="brand-logo-img" onerror="this.style.display='none'; document.getElementById('fallback-badge').style.display='flex';">
+        <div id="fallback-badge" class="logo-badge" style="display:none;">SG</div>
+        
         <div class="brand-text">
           <div class="brand-name">SG FUTA <span>Travel</span></div>
           <div class="brand-sub">Thuê xe du lịch kèm tài xế</div>
@@ -137,8 +165,9 @@
       </a>
       <ul class="nav-links">
         <li><a href="#" class="nav-link">Trang Chủ</a></li>
-        <li><a href="#tinh-gia" class="nav-link">Tra Cứu Giá Nhanh</a></li>
-        <li><a href="#bang-gia" class="nav-link">Bảng Giá Chi Tiết</a></li>
+        <li><a href="#tinh-gia" class="nav-link">Tra Cứu Giá</a></li>
+        <li><a href="#cac-dong-xe" class="nav-link">Các Dòng Xe</a></li>
+        <li><a href="#tai-xe" class="nav-link">Tài Xế</a></li>
       </ul>
       <div class="nav-actions">
         <a href="tel:1900996646" class="hotline-btn">
@@ -153,11 +182,11 @@
     <div class="container">
       <div class="hero-grid">
         <div class="hero-content">
-          <h1 class="hero-title">Thuê Xe Du Lịch <span>Kèm Tài Xế Riêng</span> Uy Tín</h1>
-          <p class="hero-desc">Chuyên cho thuê xe du lịch đời mới từ 9 đến 54 chỗ (Ghế ngồi & Giường nằm) tuyến Sài Gòn đi Vũng Tàu, Phan Thiết, Đà Lạt. Tài xế giàu kinh nghiệm, chu đáo, giá minh bạch.</p>
+          <h1 class="hero-title">Thuê Xe Du Lịch <span>Kèm Tài Xế Riêng</span> Chuyên Nghiệp</h1>
+          <p class="hero-desc">Chuyên cho thuê xe du lịch đời mới từ 9 đến 45/54 chỗ (Ghế ngồi & Giường nằm) tuyến Sài Gòn đi Vũng Tàu, Phan Thiết, Đà Lạt. Đội ngũ tài xế tận tâm, kinh nghiệm, giá minh bạch.</p>
         </div>
         <div class="hero-banner-image">
-          <img src="images/banner-xe.jpg" alt="Xe du lịch SG FUTA Travel" onerror="this.src='https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=800&q=80'">
+          <img src="images/xe-16-cho.jpg" alt="Xe du lịch SG FUTA Travel" onerror="this.src='https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=800&q=80'">
         </div>
       </div>
     </div>
@@ -172,7 +201,6 @@
       <div class="calc-body">
         <div class="calc-form-inputs">
           <div class="form-group-grid">
-            <!-- Tuyến đường -->
             <div class="form-group">
               <label class="form-label">Chọn Tuyến Đường</label>
               <select id="routeSelect" class="custom-select" onchange="calculatePrice()">
@@ -181,20 +209,18 @@
                 <option value="da-lat">Sài Gòn - Đà Lạt</option>
               </select>
             </div>
-            <!-- Loại xe -->
             <div class="form-group">
               <label class="form-label">Dòng Xe</label>
               <select id="carTypeSelect" class="custom-select" onchange="updateSeatOptions(); calculatePrice();">
                 <option value="9">Xe 9 chỗ</option>
                 <option value="16" selected>Xe 16 chỗ</option>
                 <option value="34">Xe 34 chỗ</option>
-                <option value="54">Xe 54 chỗ (45 chỗ)</option>
+                <option value="54">Xe 45/54 chỗ</option>
               </select>
             </div>
           </div>
 
           <div class="form-group-grid">
-            <!-- Kiểu ghế / giường -->
             <div class="form-group">
               <label class="form-label">Kiểu Ghế/Giường</label>
               <select id="seatStyleSelect" class="custom-select" onchange="calculatePrice()">
@@ -202,7 +228,6 @@
                 <option value="giuong">Giường nằm</option>
               </select>
             </div>
-            <!-- Thời gian thuê -->
             <div class="form-group">
               <label class="form-label">Thời Gian Thuê</label>
               <select id="durationSelect" class="custom-select" onchange="calculatePrice()">
@@ -215,14 +240,12 @@
             </div>
           </div>
 
-          <!-- Số lượng xe -->
           <div class="form-group full-width">
             <label class="form-label">Số Lượng Xe</label>
             <input type="number" id="carQuantity" class="custom-input" value="1" min="1" max="20" oninput="calculatePrice()">
           </div>
         </div>
 
-        <!-- Result Panel -->
         <div class="calc-result-panel">
           <div>
             <div class="price-display-box">
@@ -232,10 +255,76 @@
             <ul style="list-style: none; font-size: 0.88rem; color: var(--text-muted); display: flex; flex-direction: column; gap: 6px;">
               <li>✔️ Đã bao gồm tài xế riêng</li>
               <li>✔️ Bao gồm chi phí xăng xe, cầu đường</li>
-              <li>📞 Hotline hỗ trợ: <strong>1900 996646</strong></li>
+              <li>📞 Hotline: <strong>1900 996646</strong> - <strong>028 3636 9551</strong></li>
             </ul>
           </div>
-          <button class="action-btn-book" onclick="alert('Cảm ơn bạn đã quan tâm! Vui lòng gọi Hotline 1900 996646 để chốt xe nhanh chóng.')">Xác Nhận Đặt Xe Ngay</button>
+          <button class="action-btn-book" onclick="alert('Cảm ơn bạn! Vui lòng liên hệ Hotline 1900 996646 hoặc 028 3636 9551 để hoàn tất đặt xe.')">Xác Nhận Đặt Xe Ngay</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section Các Dòng Xe -->
+  <section id="cac-dong-xe" class="fleet-section">
+    <div class="container">
+      <h2 style="text-align: center; font-size: 1.8rem; font-weight: 800; color: var(--text-dark);">Các Dòng Xe Phục Vụ</h2>
+      <div class="fleet-grid">
+        <div class="fleet-card">
+          <div class="fleet-img-wrap">
+            <img src="images/xe-9-cho.jpg" alt="Xe 9 chỗ" onerror="this.src='https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=500&q=80'">
+          </div>
+          <div class="fleet-body">
+            <div class="fleet-title">Xe 9 Chỗ Dcar Limousine</div>
+            <div class="fleet-desc">Sang trọng, tiện nghi cao cấp, ghế massage êm ái thích hợp cho gia đình nhỏ.</div>
+          </div>
+        </div>
+
+        <div class="fleet-card">
+          <div class="fleet-img-wrap">
+            <img src="images/xe-16-cho.jpg" alt="Xe 16 chỗ" onerror="this.src='https://images.unsplash.com/photo-1570125909232-eb263c188f7e?auto=format&fit=crop&w=500&q=80'">
+          </div>
+          <div class="fleet-body">
+            <div class="fleet-title">Xe 16 Chỗ (Ghế / Giường)</div>
+            <div class="fleet-desc">Nội thất hiện đại, không gian rộng rãi, tùy chọn ghế ngồi hoặc giường nằm êm ái.</div>
+          </div>
+        </div>
+
+        <div class="fleet-card">
+          <div class="fleet-img-wrap">
+            <img src="images/xe-34-cho.jpg" alt="Xe 34 chỗ" onerror="this.src='https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=500&q=80'">
+          </div>
+          <div class="fleet-body">
+            <div class="fleet-title">Xe 34 Chỗ (Ghế / Giường)</div>
+            <div class="fleet-desc">Phù hợp cho đoàn du lịch công ty, trường học. Tùy chọn xe giường nằm cao cấp.</div>
+          </div>
+        </div>
+
+        <div class="fleet-card">
+          <div class="fleet-img-wrap">
+            <img src="images/xe-45-cho.jpg" alt="Xe 45 chỗ" onerror="this.src='https://images.unsplash.com/photo-1570125909232-eb263c188f7e?auto=format&fit=crop&w=500&q=80'">
+          </div>
+          <div class="fleet-body">
+            <div class="fleet-title">Xe 45/54 Chỗ (Ghế / Giường)</div>
+            <div class="fleet-desc">Dòng xe cỡ lớn sức chứa vượt trội, vận hành êm ái, khoang hành lý siêu rộng.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section Đội Ngũ Tài Xế -->
+  <section id="tai-xe" class="driver-section">
+    <div class="container">
+      <div class="driver-grid">
+        <div class="driver-img-box">
+          <img src="images/tai-xe.jpg" alt="Đội ngũ tài xế SG FUTA Travel" onerror="this.src='https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=800&q=80'">
+        </div>
+        <div>
+          <h2 style="font-size: 2rem; font-weight: 800; color: var(--primary-green); margin-bottom: 14px;">Đội Ngũ Tài Xế Chuyên Nghiệp</h2>
+          <p style="color: var(--text-muted); font-size: 1rem; line-height: 1.7; margin-bottom: 20px;">Tài xế của SG FUTA Travel đều có nhiều năm kinh nghiệm lái xe đường dài, am hiểu đường xá Sài Gòn - Vũng Tàu - Phan Thiết - Đà Lạt. Lái xe an toàn, lịch sự, đúng giờ và luôn hỗ trợ khách hàng chu đáo suốt hành trình.</p>
+          <div style="background: var(--primary-orange-light); padding: 16px; border-radius: var(--radius-md); border-left: 4px solid var(--primary-orange);">
+            <strong>Cam kết từ tài xế SG FUTA Travel:</strong> Không phóng nhanh vượt ẩu - Đúng giờ hẹn - Thái độ văn minh, lịch sự.
+          </div>
         </div>
       </div>
     </div>
@@ -250,7 +339,7 @@
           <p style="font-size: 0.9rem; color: #CBD5E1;">Đơn vị cho thuê xe du lịch hàng đầu tuyến Sài Gòn đi Vũng Tàu, Phan Thiết, Đà Lạt với đội ngũ tài xế chuyên nghiệp, an toàn tuyệt đối.</p>
         </div>
         <div>
-          <h4 style="margin-bottom: 12px; font-size: 1rem;">Liên Hệ Tổng Đài</h4>
+          <h4 style="margin-bottom: 12px; font-size: 1rem;">Tổng Đài Liên Hệ</h4>
           <p style="font-size: 0.9rem; color: #CBD5E1; margin-bottom: 6px;">Hotline 1: <strong>1900 996646</strong></p>
           <p style="font-size: 0.9rem; color: #CBD5E1;">Hotline 2: <strong>028 3636 9551</strong></p>
         </div>
@@ -273,7 +362,6 @@
       const carType = document.getElementById('carTypeSelect').value;
       const seatStyle = document.getElementById('seatStyleSelect');
       
-      // Nếu xe 9 chỗ thì ẩn giường nằm hoặc khóa về ghế
       if (carType === '9') {
         seatStyle.innerHTML = '<option value="ghe">Ghế ngồi</option>';
       } else {
@@ -301,7 +389,6 @@
 
       let basePriceInMillions = 0;
 
-      // Bảng giá logic chính xác theo yêu cầu
       if (carType === '9') {
         if (route === 'vung-tau') {
           if (duration === 'trong-ngay') basePriceInMillions = 2;
@@ -384,8 +471,10 @@
       }
 
       let totalPrice = basePriceInMillions * quantity;
-      document.getElementById('totalPriceDisplay').innerText = totalPrice.toLocaleString('vi-VN') + (totalPrice >= 10 ? " Triệu" : " Triệu");
+      document.getElementById('totalPriceDisplay').innerText = totalPrice.toLocaleString('vi-VN') + " Triệu";
     }
   </script>
 </body>
 </html>
+
+```
